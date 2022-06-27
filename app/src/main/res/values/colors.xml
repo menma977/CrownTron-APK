@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="resources.background">#161E43</color>
+
+  <color name="resources.text">#ffff</color>
+  <color name="resources.text.dark">#161E43</color>
+  <color name="resources.text.light">#a8c5ff</color>
+  <color name="resources.text.link">#5B92FF</color>
+  <color name="resources.text.field.light">#82A9F4</color>
+
+  <color name="resources.icon.dark">#060818</color>
+
+  <color name="resources.button.default">#5B92FF</color>
+  <color name="resources.button.default.gradient">#2870ff</color>
+  <color name="resources.button.default.click">#ffae21</color>
+  <color name="resources.button.default.click.gradient">#ffa914</color>
+  <color name="resources.button.success">#26B89A</color>
+  <color name="resources.button.danger">#D7524F</color>
+  <color name="resources.button.warning">#EEAC4E</color>
+  <color name="resources.card">#2d3d88</color>
+  <color name="resources.card.click">#161E43</color>
+
+  <color name="background.main">#2d3d88</color>
+  <color name="background.dark">#161E43</color>
+
+  <color name="primary">#3579ff</color>
+  <color name="primary.dark">#2A5FC8</color>
+  <color name="primary.light">#568EFB</color>
+
+  <color name="secondary">#FFD541</color>
+  <color name="secondary.dark">#c88b05</color>
+  <color name="secondary.light">#ffed75</color>
+
+  <color name="accent">#ffed75</color>
+</resources>

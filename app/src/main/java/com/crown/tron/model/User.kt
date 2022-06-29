@@ -11,6 +11,10 @@ class User(context: Context) {
   private val sharedPreferences: SharedPreferences = context.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
   private val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
 
+  fun findId(id: String): Boolean {
+    return sharedPreferences.contains(id)
+  }
+
   fun setInteger(id: String, value: Int) {
     sharedPreferencesEditor.putInt(id, value)
     sharedPreferencesEditor.commit()

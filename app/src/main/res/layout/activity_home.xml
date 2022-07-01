@@ -20,8 +20,8 @@
         android:elevation="2dp">
 
       <ImageView
-          android:layout_width="40dp"
-          android:layout_height="40dp"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
           app:srcCompat="@mipmap/ic_launcher_round"
           android:id="@+id/imageViewGrade"
           app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,7 @@
           android:layout_marginStart="15dp"
           android:layout_marginEnd="10dp"
           android:contentDescription="@string/app_name"
-          android:scaleType="fitXY"/>
+          android:scaleType="fitCenter"/>
 
       <TextView
           android:text="@string/username"
@@ -340,7 +340,244 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/primary.light"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp">
+
+      <TableRow
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            tools:ignore="UselessParent">
+
+          <TextView
+              android:text="@string/total_profit"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"/>
+
+          <Space
+              android:layout_width="match_parent"
+              android:layout_height="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewTotalProfit"
+              android:text="@string/zero"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="20sp"/>
+
+        </LinearLayout>
+
+      </TableRow>
+
+      <TableRow
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_default"
+            android:padding="10dp"
+            android:layout_marginHorizontal="10dp">
+
+          <TextView
+              android:text="@string/total_profit_left"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"/>
+
+          <Space
+              android:layout_width="match_parent"
+              android:layout_height="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewTotalProfitLeft"
+              android:text="@string/zero"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_default"
+            android:padding="10dp"
+            android:layout_marginHorizontal="10dp">
+
+          <TextView
+              android:text="@string/total_profit_right"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"/>
+
+          <Space
+              android:layout_width="match_parent"
+              android:layout_height="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewTotalProfitRight"
+              android:text="@string/zero"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+      </TableRow>
+
+      <TableRow
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_default"
+            android:padding="10dp"
+            android:layout_marginHorizontal="10dp">
+
+          <TextView
+              android:text="@string/profit_left"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"/>
+
+          <Space
+              android:layout_width="match_parent"
+              android:layout_height="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewProfitLeft"
+              android:text="@string/data_null"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_default"
+            android:padding="10dp"
+            android:layout_marginHorizontal="10dp">
+
+          <TextView
+              android:text="@string/profit_right"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"/>
+
+          <Space
+              android:layout_width="match_parent"
+              android:layout_height="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewProfitRight"
+              android:text="@string/data_null"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+      </TableRow>
+
+      <TableRow
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_default"
+            android:padding="10dp"
+            android:layout_marginHorizontal="10dp">
+
+          <TextView
+              android:text="@string/user_left"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"/>
+
+          <Space
+              android:layout_width="match_parent"
+              android:layout_height="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewUserLeft"
+              android:text="@string/data_null"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_default"
+            android:padding="10dp"
+            android:layout_marginHorizontal="10dp">
+
+          <TextView
+              android:text="@string/user_right"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"/>
+
+          <Space
+              android:layout_width="match_parent"
+              android:layout_height="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewUserRight"
+              android:text="@string/data_null"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              tools:ignore="TooManyViews"/>
+
+        </LinearLayout>
+
+      </TableRow>
+
+    </TableLayout>
 
   </LinearLayout>
 

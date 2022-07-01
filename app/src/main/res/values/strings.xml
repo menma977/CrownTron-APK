@@ -22,6 +22,7 @@
   <string name="type">type</string>
   <string name="at">At</string>
   <string name="zero">0</string>
+  <string name="data_null">-</string>
   <string name="zero_percent">0%</string>
   <string name="reset">Reset</string>
   <string name="start">Start</string>
@@ -44,4 +45,11 @@
   <string name="copy">Copy</string>
   <string name="profit_package">Profit Package</string>
   <string name="profit_pairing">Profit Pairing</string>
+  <string name="total_profit">Total Profit</string>
+  <string name="total_profit_left">Total Profit Left</string>
+  <string name="total_profit_right">Total Profit right</string>
+  <string name="profit_left">Profit Left</string>
+  <string name="profit_right">Profit Right</string>
+  <string name="user_left">User Left</string>
+  <string name="user_right">User Right</string>
 </resources>

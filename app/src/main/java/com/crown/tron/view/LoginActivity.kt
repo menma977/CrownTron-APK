@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         loading.closeDialog()
         move = Intent(this, HomeActivity::class.java)
         startActivity(move)
-        finish()
+        finishAffinity()
       }, {
         loading.closeDialog()
         Toast.makeText(this, HandleError(it).result().getString("message"), Toast.LENGTH_LONG).show()

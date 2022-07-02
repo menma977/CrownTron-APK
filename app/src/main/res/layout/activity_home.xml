@@ -104,7 +104,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -126,6 +126,13 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"/>
+
+      <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/buttonClaimProfitBalance"
+          android:text="@string/claim"
+          android:layout_width="80dp"
+          android:layout_height="24dp"
+          android:background="@drawable/button_default"/>
 
     </LinearLayout>
 
@@ -165,6 +172,13 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"/>
 
+      <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/buttonClaimProfitPackage"
+          android:text="@string/claim"
+          android:layout_width="80dp"
+          android:layout_height="24dp"
+          android:background="@drawable/button_default"/>
+
     </LinearLayout>
 
     <Space
@@ -203,7 +217,25 @@
           android:layout_height="wrap_content"
           android:layout_weight="1"/>
 
+      <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/buttonClaimProfitPairing"
+          android:text="@string/claim"
+          android:layout_width="80dp"
+          android:layout_height="24dp"
+          android:background="@drawable/button_default"/>
+
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/primary.light"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
 
     <Space
         android:layout_width="match_parent"
@@ -219,93 +251,6 @@
           android:layout_height="match_parent"
           android:gravity="center"
           tools:ignore="UselessParent">
-
-        <LinearLayout
-            android:id="@+id/linearLayoutHistory"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/button_default"
-            android:orientation="vertical"
-            android:gravity="center">
-
-          <ImageView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              app:srcCompat="@drawable/ic_baseline_restore"
-              android:contentDescription="@string/app_name"
-              app:tint="@color/resources.text"/>
-
-          <TextView
-              android:text="@string/history"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:textColor="@color/resources.text"
-              android:gravity="center"/>
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
-
-        <LinearLayout
-            android:id="@+id/linearLayoutPackage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/button_default"
-            android:orientation="vertical"
-            android:gravity="center">
-
-          <ImageView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              app:srcCompat="@drawable/ic_package"
-              android:contentDescription="@string/app_name"
-              app:tint="@color/resources.text"/>
-
-          <TextView
-              android:text="@string/packages"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:textColor="@color/resources.text"
-              android:gravity="center"/>
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
-
-        <LinearLayout
-            android:id="@+id/linearLayoutLedger"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/button_default"
-            android:orientation="vertical"
-            android:gravity="center">
-
-          <ImageView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              app:srcCompat="@drawable/ic_ledger"
-              android:contentDescription="@string/app_name"
-              app:tint="@color/resources.text"/>
-
-          <TextView
-              android:text="@string/ledger"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:textStyle="bold"
-              android:textColor="@color/resources.text"
-              android:gravity="center"/>
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
 
         <LinearLayout
             android:id="@+id/linearLayoutTransfer"
@@ -324,6 +269,35 @@
 
           <TextView
               android:text="@string/transfer"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:textColor="@color/resources.text"
+              android:gravity="center"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutHistory"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/button_default"
+            android:orientation="vertical"
+            android:gravity="center">
+
+          <ImageView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              app:srcCompat="@drawable/ic_baseline_restore"
+              android:contentDescription="@string/app_name"
+              app:tint="@color/resources.text"/>
+
+          <TextView
+              android:text="@string/history"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:textStyle="bold"

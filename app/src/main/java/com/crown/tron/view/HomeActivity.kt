@@ -14,6 +14,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.crown.tron.R
 import com.crown.tron.controller.DashboardController
+import com.crown.tron.controller.LedgerController
 import com.crown.tron.controller.LogoutController
 import com.crown.tron.http.web.HandleError
 import com.crown.tron.modal.Loading
@@ -38,9 +39,10 @@ class HomeActivity : AppCompatActivity() {
   private lateinit var textViewUserRight: TextView
   private lateinit var buttonLogout: ImageButton
   private lateinit var buttonCopy: Button
+  private lateinit var buttonProfitBalance: Button
+  private lateinit var buttonProfitPackage: Button
+  private lateinit var buttonProfitPairing: Button
   private lateinit var linearLayoutHistory: LinearLayout
-  private lateinit var linearLayoutPackage: LinearLayout
-  private lateinit var linearLayoutLedger: LinearLayout
   private lateinit var linearLayoutTransfer: LinearLayout
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -65,14 +67,17 @@ class HomeActivity : AppCompatActivity() {
 
     buttonLogout = findViewById(R.id.imageButtonLogout)
     buttonCopy = findViewById(R.id.buttonCopyReferral)
+    buttonProfitBalance = findViewById(R.id.buttonClaimProfitBalance)
+    buttonProfitPackage = findViewById(R.id.buttonClaimProfitPackage)
+    buttonProfitPairing = findViewById(R.id.buttonClaimProfitPairing)
 
     linearLayoutHistory = findViewById(R.id.linearLayoutHistory)
-    linearLayoutPackage = findViewById(R.id.linearLayoutPackage)
-    linearLayoutLedger = findViewById(R.id.linearLayoutLedger)
     linearLayoutTransfer = findViewById(R.id.linearLayoutTransfer)
 
     textViewUsername.text = user.getString("username")
     textViewReferral.text = user.getString("referral")
+
+    loading.openDialog()
 
     DashboardController(request).invoke(user.getString("token")).call({
       textViewProfitBalance.text = it.getJSONObject("ledger").getString("balance")
@@ -85,6 +90,8 @@ class HomeActivity : AppCompatActivity() {
       textViewProfitRight.text = it.getJSONObject("binary").getString("profit_right")
       textViewUserLeft.text = it.getJSONObject("binary").getString("user_left")
       textViewUserRight.text = it.getJSONObject("binary").getString("user_right")
+
+      loading.closeDialog()
     }, {
       val handleError = HandleError(it).result()
       if (handleError.getBoolean("logout")) {
@@ -95,6 +102,8 @@ class HomeActivity : AppCompatActivity() {
       } else {
         Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_LONG).show()
       }
+
+      loading.closeDialog()
     })
 
     buttonLogout.setOnClickListener {
@@ -109,9 +118,79 @@ class HomeActivity : AppCompatActivity() {
       val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
       val clip = ClipData.newPlainText("referral", textViewReferral.text)
       clipboard.setPrimaryClip(clip)
-      Toast.makeText(this, "Copied to clipboard", Toast.LENGTH_LONG).show()
+      Toast.makeText(this, "Link Copied to clipboard", Toast.LENGTH_SHORT).show()
     }
 
+    buttonProfitBalance.setOnClickListener {
+      loading.openDialog()
+      LedgerController(request).withdraw(user.getString("token")).call({
+        loading.closeDialog()
+        Toast.makeText(this, it.getString("message"), Toast.LENGTH_SHORT).show()
+      }, {
+        val handleError = HandleError(it).result()
+        if (handleError.getBoolean("logout")) {
+          user.clear()
+          move = Intent(this, LoginActivity::class.java)
+          startActivity(move)
+          finish()
+        } else {
+          Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_SHORT).show()
+        }
 
+        loading.closeDialog()
+      })
+    }
+
+    buttonProfitPackage.setOnClickListener {
+      loading.openDialog()
+      LedgerController(request).claim(user.getString("token"), 1).call({
+        loading.closeDialog()
+        Toast.makeText(this, it.getString("message"), Toast.LENGTH_SHORT).show()
+      }, {
+        val handleError = HandleError(it).result()
+        if (handleError.getBoolean("logout")) {
+          user.clear()
+          move = Intent(this, LoginActivity::class.java)
+          startActivity(move)
+          finish()
+        } else {
+          Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_SHORT).show()
+        }
+
+        loading.closeDialog()
+      })
+    }
+
+    buttonProfitPairing.setOnClickListener {
+      loading.openDialog()
+      LedgerController(request).claim(user.getString("token"), 2).call({
+        loading.closeDialog()
+        Toast.makeText(this, it.getString("message"), Toast.LENGTH_SHORT).show()
+      }, {
+        val handleError = HandleError(it).result()
+        if (handleError.getBoolean("logout")) {
+          user.clear()
+          move = Intent(this, LoginActivity::class.java)
+          startActivity(move)
+          finish()
+        } else {
+          Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_SHORT).show()
+        }
+
+        loading.closeDialog()
+      })
+    }
+
+    linearLayoutHistory.setOnClickListener {
+      move = Intent(this, HistoryActivity::class.java)
+      startActivity(move)
+      finish()
+    }
+
+    linearLayoutTransfer.setOnClickListener {
+      move = Intent(this, TransferActivity::class.java)
+      startActivity(move)
+      finish()
+    }
   }
 }

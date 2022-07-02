@@ -16,7 +16,7 @@
   <string name="end_session">End Session</string>
   <string name="amount">Amount</string>
   <string name="wallet">Wallet</string>
-  <string name="description">press logo to open barcode scan</string>
+  <string name="description">Description</string>
   <string name="address">address</string>
   <string name="balance">Balance</string>
   <string name="type">type</string>

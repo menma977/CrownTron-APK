@@ -11,7 +11,7 @@ class HandleError(private val error: VolleyError) {
       val jsonMessage: JSONObject = if (raw.isNotEmpty()) {
         JSONObject(raw)
       } else {
-        JSONObject().put("message", "something when wrong")
+        JSONObject().put("message", "something when wrong").put("logout", false)
       }
       return when (error.networkResponse.statusCode) {
         401 -> {
@@ -26,7 +26,7 @@ class HandleError(private val error: VolleyError) {
         }
       }
     } catch (e: Exception) {
-      return JSONObject().put("message", e.localizedMessage)
+      return JSONObject().put("message", e.localizedMessage).put("logout", false)
     }
   }
 }

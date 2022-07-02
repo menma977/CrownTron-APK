@@ -4,21 +4,12 @@
 
   <color name="resources.text">#ffff</color>
   <color name="resources.text.dark">#161E43</color>
-  <color name="resources.text.light">#a8c5ff</color>
-  <color name="resources.text.link">#5B92FF</color>
-  <color name="resources.text.field.light">#82A9F4</color>
 
   <color name="resources.icon.dark">#060818</color>
 
   <color name="resources.button.default">#5B92FF</color>
-  <color name="resources.button.default.gradient">#2870ff</color>
   <color name="resources.button.default.click">#ffae21</color>
-  <color name="resources.button.default.click.gradient">#ffa914</color>
-  <color name="resources.button.success">#26B89A</color>
   <color name="resources.button.danger">#D7524F</color>
-  <color name="resources.button.warning">#EEAC4E</color>
-  <color name="resources.card">#2d3d88</color>
-  <color name="resources.card.click">#161E43</color>
 
   <color name="background.main">#2d3d88</color>
   <color name="background.dark">#161E43</color>

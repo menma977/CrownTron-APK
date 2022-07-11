@@ -1,5 +1,6 @@
 package com.crown.tron.http.web
 
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -24,6 +25,8 @@ class Get(private var request: RequestQueue, private var targetUrl: String, priv
       }
     }
 
+    jsonRequest.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+
     request.add(jsonRequest)
   }
 
@@ -39,6 +42,8 @@ class Get(private var request: RequestQueue, private var targetUrl: String, priv
         return headers
       }
     }
+
+    stringRequest.retryPolicy = DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
 
     request.add(stringRequest)
   }

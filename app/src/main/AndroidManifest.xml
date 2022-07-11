@@ -15,6 +15,10 @@
       android:usesCleartextTraffic="true"
       tools:ignore="AllowBackup">
     <activity
+        android:name=".view.RegisterActivity"
+        android:exported="true"
+        android:theme="@style/Theme.CrownTron.NoActionBar"/>
+    <activity
         android:name=".view.TransferActivity"
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>

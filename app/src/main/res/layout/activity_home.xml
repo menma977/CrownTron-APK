@@ -253,6 +253,35 @@
           tools:ignore="UselessParent">
 
         <LinearLayout
+            android:id="@+id/linearLayoutRegister"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/button_default"
+            android:orientation="vertical"
+            android:gravity="center">
+
+          <ImageView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              app:srcCompat="@drawable/ic_baseline_assignment"
+              android:contentDescription="@string/register"
+              app:tint="@color/resources.text"/>
+
+          <TextView
+              android:text="@string/register"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:textColor="@color/resources.text"
+              android:gravity="center"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
             android:id="@+id/linearLayoutTransfer"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -264,7 +293,7 @@
               android:layout_width="40dp"
               android:layout_height="40dp"
               app:srcCompat="@drawable/ic_baseline_near_me"
-              android:contentDescription="@string/app_name"
+              android:contentDescription="@string/transfer"
               app:tint="@color/resources.text"/>
 
           <TextView
@@ -293,7 +322,7 @@
               android:layout_width="40dp"
               android:layout_height="40dp"
               app:srcCompat="@drawable/ic_baseline_restore"
-              android:contentDescription="@string/app_name"
+              android:contentDescription="@string/history"
               app:tint="@color/resources.text"/>
 
           <TextView
@@ -538,7 +567,8 @@
 
           <Space
               android:layout_width="match_parent"
-              android:layout_height="5dp"/>
+              android:layout_height="5dp"
+              tools:ignore="TooManyViews"/>
 
           <TextView
               android:id="@+id/textViewUserRight"

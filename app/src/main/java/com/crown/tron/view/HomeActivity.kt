@@ -42,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
   private lateinit var buttonProfitBalance: Button
   private lateinit var buttonProfitPackage: Button
   private lateinit var buttonProfitPairing: Button
+  private lateinit var linearLayoutRegister: LinearLayout
   private lateinit var linearLayoutHistory: LinearLayout
   private lateinit var linearLayoutTransfer: LinearLayout
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +72,7 @@ class HomeActivity : AppCompatActivity() {
     buttonProfitPackage = findViewById(R.id.buttonClaimProfitPackage)
     buttonProfitPairing = findViewById(R.id.buttonClaimProfitPairing)
 
+    linearLayoutRegister = findViewById(R.id.linearLayoutRegister)
     linearLayoutHistory = findViewById(R.id.linearLayoutHistory)
     linearLayoutTransfer = findViewById(R.id.linearLayoutTransfer)
 
@@ -179,6 +181,11 @@ class HomeActivity : AppCompatActivity() {
 
         loading.closeDialog()
       })
+    }
+
+    linearLayoutRegister.setOnClickListener {
+      move = Intent(this, RegisterActivity::class.java)
+      startActivity(move)
     }
 
     linearLayoutHistory.setOnClickListener {

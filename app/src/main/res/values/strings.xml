@@ -25,4 +25,11 @@
   <string name="profit_right">Profit Right</string>
   <string name="user_left">User Left</string>
   <string name="user_right">User Right</string>
+  <string name="register">Register</string>
+  <string name="name">Name</string>
+  <string name="email">Email</string>
+  <string name="password_confirmation">Password Confirmation</string>
+  <string name="position">Position</string>
+  <string name="left">Left</string>
+  <string name="right">Right</string>
 </resources>

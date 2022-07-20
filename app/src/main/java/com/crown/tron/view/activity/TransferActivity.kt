@@ -1,16 +1,14 @@
-package com.crown.tron.view
+package com.crown.tron.view.activity
 
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
+import com.budiyev.android.codescanner.*
 import com.crown.tron.R
 import com.crown.tron.controller.TronController
 import com.crown.tron.http.web.HandleError
@@ -22,6 +20,8 @@ class TransferActivity : AppCompatActivity() {
   private lateinit var request: RequestQueue
   private lateinit var loading: Loading
   private lateinit var move: Intent
+  private lateinit var frameScanner: CodeScannerView
+  private lateinit var codeScanner: CodeScanner
   private lateinit var wallet: TextView
   private lateinit var balance: TextView
   private lateinit var walletText: EditText
@@ -36,6 +36,7 @@ class TransferActivity : AppCompatActivity() {
     loading = Loading(this)
     request = Volley.newRequestQueue(this)
 
+    frameScanner = findViewById(R.id.frameLayoutScanner)
     wallet = findViewById(R.id.textViewWallet)
     balance = findViewById(R.id.textViewBalance)
     walletText = findViewById(R.id.editTextWallet)
@@ -43,6 +44,8 @@ class TransferActivity : AppCompatActivity() {
     send = findViewById(R.id.buttonSend)
 
     loading.openDialog()
+
+    startScanning()
 
     TronController(request).index(user.getString("token")).call({
       wallet.text = it.getString("address")
@@ -93,8 +96,51 @@ class TransferActivity : AppCompatActivity() {
     }
   }
 
+  private fun startScanning() {
+    val scannerView: CodeScannerView = findViewById(R.id.frameLayoutScanner)
+    codeScanner = CodeScanner(this, scannerView)
+    codeScanner.camera = CodeScanner.CAMERA_BACK
+    codeScanner.formats = CodeScanner.ALL_FORMATS
+    codeScanner.autoFocusMode = AutoFocusMode.SAFE
+    codeScanner.scanMode = ScanMode.SINGLE
+    codeScanner.isAutoFocusEnabled = true
+    codeScanner.isFlashEnabled = false
+
+    codeScanner.decodeCallback = DecodeCallback {
+      runOnUiThread {
+        walletText.setText(it.text)
+      }
+    }
+    codeScanner.errorCallback = ErrorCallback {
+      runOnUiThread {
+        Toast.makeText(
+          this, "Camera initialization error: ${it.message}",
+          Toast.LENGTH_LONG
+        ).show()
+      }
+    }
+
+    scannerView.setOnClickListener {
+      codeScanner.startPreview()
+    }
+  }
+
+  override fun onResume() {
+    super.onResume()
+    if (::codeScanner.isInitialized) {
+      codeScanner.startPreview()
+    }
+  }
+
+  override fun onPause() {
+    if (::codeScanner.isInitialized) {
+      codeScanner.releaseResources()
+    }
+    super.onPause()
+  }
+
   override fun onBackPressed() {
-    move = Intent(this, HomeActivity::class.java)
+    move = Intent(this, NavigationActivity::class.java)
     startActivity(move)
     finish()
   }

@@ -4,6 +4,7 @@
           package="com.crown.tron">
 
   <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
   <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
   <application
@@ -15,23 +16,23 @@
       android:usesCleartextTraffic="true"
       tools:ignore="AllowBackup">
     <activity
-        android:name=".view.RegisterActivity"
+        android:name=".view.activity.PackageActivity"
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>
     <activity
-        android:name=".view.TransferActivity"
+        android:name=".view.activity.LedgerActivity"
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>
     <activity
-        android:name=".view.HistoryActivity"
+        android:name=".view.activity.NavigationActivity"
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>
     <activity
-        android:name=".view.HomeActivity"
+        android:name=".view.activity.TransferActivity"
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>
     <activity
-        android:name=".view.LoginActivity"
+        android:name=".view.activity.LoginActivity"
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>
     <activity

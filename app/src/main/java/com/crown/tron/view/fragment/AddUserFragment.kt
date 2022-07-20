@@ -1,13 +1,15 @@
-package com.crown.tron.view
+package com.crown.tron.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.crown.tron.R
@@ -15,8 +17,9 @@ import com.crown.tron.controller.UserController
 import com.crown.tron.http.web.HandleError
 import com.crown.tron.modal.Loading
 import com.crown.tron.model.User
+import com.crown.tron.view.activity.LoginActivity
 
-class RegisterActivity : AppCompatActivity() {
+class AddUserFragment : Fragment() {
   private lateinit var user: User
   private lateinit var request: RequestQueue
   private lateinit var loading: Loading
@@ -30,22 +33,21 @@ class RegisterActivity : AppCompatActivity() {
   private lateinit var positionRight: RadioButton
   private lateinit var send: Button
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_register)
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    val view = inflater.inflate(R.layout.fragment_add_user, container, false)
 
-    user = User(this)
-    request = Volley.newRequestQueue(this)
-    loading = Loading(this)
+    user = User(activity!!)
+    request = Volley.newRequestQueue(activity!!)
+    loading = Loading(activity!!)
 
-    name = findViewById(R.id.editTextName)
-    username = findViewById(R.id.editTextUsername)
-    email = findViewById(R.id.editTextEmail)
-    password = findViewById(R.id.editTextPassword)
-    confirm = findViewById(R.id.editTextPasswordConfirmation)
-    positionLeft = findViewById(R.id.radioButtonLeft)
-    positionRight = findViewById(R.id.radioButtonRight)
-    send = findViewById(R.id.buttonSend)
+    name = view.findViewById(R.id.editTextName)
+    username = view.findViewById(R.id.editTextUsername)
+    email = view.findViewById(R.id.editTextEmail)
+    password = view.findViewById(R.id.editTextPassword)
+    confirm = view.findViewById(R.id.editTextPasswordConfirmation)
+    positionLeft = view.findViewById(R.id.radioButtonLeft)
+    positionRight = view.findViewById(R.id.radioButtonRight)
+    send = view.findViewById(R.id.buttonSend)
 
     send.setOnClickListener {
       loading.openDialog()
@@ -59,28 +61,22 @@ class RegisterActivity : AppCompatActivity() {
         position,
         user.getString("token")
       ).call({
-        Log.i("RegisterActivity", it.toString())
-        Toast.makeText(this, it.getString("message"), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity!!, it.getString("message"), Toast.LENGTH_LONG).show()
         loading.closeDialog()
       }, {
         val handleError = HandleError(it).result()
-        Log.i("RegisterActivity E", handleError.toString())
         if (handleError.getBoolean("logout")) {
           user.clear()
-          move = Intent(this, LoginActivity::class.java)
+          move = Intent(activity!!, LoginActivity::class.java)
           startActivity(move)
-          finish()
+          activity!!.finish()
         } else {
-          Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_LONG).show()
+          Toast.makeText(activity!!, handleError.getString("message"), Toast.LENGTH_LONG).show()
         }
         loading.closeDialog()
       })
     }
-  }
 
-  override fun onBackPressed() {
-    move = Intent(this, HomeActivity::class.java)
-    startActivity(move)
-    finish()
+    return view
   }
 }

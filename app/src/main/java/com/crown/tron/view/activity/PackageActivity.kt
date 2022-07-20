@@ -1,4 +1,4 @@
-package com.crown.tron.view
+package com.crown.tron.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,54 +9,56 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.crown.tron.R
-import com.crown.tron.adapter.HistoryAdapter
-import com.crown.tron.controller.HistoryController
+import com.crown.tron.adapter.PackageAdapter
+import com.crown.tron.controller.PackageController
 import com.crown.tron.http.web.HandleError
 import com.crown.tron.modal.Loading
-import com.crown.tron.model.History
+import com.crown.tron.model.Package
 import com.crown.tron.model.User
 
-class HistoryActivity : AppCompatActivity() {
+class PackageActivity : AppCompatActivity() {
   private lateinit var user: User
-  private lateinit var loading: Loading
   private lateinit var request: RequestQueue
+  private lateinit var loading: Loading
   private lateinit var move: Intent
-  private lateinit var historyAdapter: HistoryAdapter
+  private lateinit var packageAdapter: PackageAdapter
   private lateinit var listViewContainer: RecyclerView
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_history)
+    setContentView(R.layout.activity_package)
 
     user = User(this)
     loading = Loading(this)
     request = Volley.newRequestQueue(this)
 
-    historyAdapter = HistoryAdapter()
+    listViewContainer = findViewById(R.id.lists_container)
+
+    packageAdapter = PackageAdapter(this, user.getString("token"))
 
     listViewContainer = findViewById<RecyclerView?>(R.id.lists_container).apply {
-      layoutManager = LinearLayoutManager(this@HistoryActivity)
-      adapter = historyAdapter
+      layoutManager = LinearLayoutManager(this@PackageActivity)
+      adapter = packageAdapter
     }
 
-    historyAdapter.clear()
+    packageAdapter.clear()
 
-    getHistory()
-  }
-
-  private fun getHistory() {
-    historyAdapter.clear()
     loading.openDialog()
 
-    HistoryController(request).invoke(user.getString("token")).call({
-      val list = it.getJSONArray("history")
+    PackageController(request).invoke(user.getString("token")).call({
+      val list = it.getJSONArray("packages")
 
       for (i in 0 until list.length()) {
         val item = list.getJSONObject(i)
-        historyAdapter.addItem(History(
-          item.getString("description"),
-          item.getString("created_at"),
-        ))
+        packageAdapter.addItem(
+          Package(
+            item.getInt("id"),
+            item.getString("name"),
+            item.getString("monthly_profit") + " TRX/Month",
+            item.getString("description"),
+            item.getString("target"),
+          )
+        )
       }
 
       loading.closeDialog()
@@ -75,8 +77,8 @@ class HistoryActivity : AppCompatActivity() {
   }
 
   override fun onBackPressed() {
-    move = Intent(this, HomeActivity::class.java)
+    move = Intent(this, NavigationActivity::class.java)
     startActivity(move)
-    finishAffinity()
+    finish()
   }
 }

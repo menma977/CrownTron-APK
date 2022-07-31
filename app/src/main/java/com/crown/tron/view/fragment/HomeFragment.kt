@@ -48,9 +48,9 @@ class HomeFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-    user = User(activity!!)
-    request = Volley.newRequestQueue(activity!!)
-    loading = Loading(activity!!)
+    user = User(requireActivity())
+    request = Volley.newRequestQueue(requireActivity())
+    loading = Loading(requireActivity())
 
     historyAdapter = HistoryAdapter()
 
@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
     imageViewAddress = view.findViewById(R.id.imageViewAddress)
 
     listViewContainer = view.findViewById<RecyclerView?>(R.id.lists_container).apply {
-      layoutManager = LinearLayoutManager(activity!!)
+      layoutManager = LinearLayoutManager(requireActivity())
       adapter = historyAdapter
     }
 
@@ -75,32 +75,32 @@ class HomeFragment : Fragment() {
     textViewReferral.text = user.getString("referral")
 
     imageViewAddress.setOnClickListener {
-      WalletModal.show(activity!!, user.getString("address"))
+      WalletModal.show(requireActivity(), user.getString("address"))
     }
 
     buttonCopyReferral.setOnClickListener {
-      val clipboard = activity!!.getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
+      val clipboard = requireActivity().getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
       val clip = ClipData.newPlainText("referral", textViewReferral.text)
       clipboard.setPrimaryClip(clip)
-      Toast.makeText(activity!!, "Link Copied to clipboard", Toast.LENGTH_SHORT).show()
+      Toast.makeText(requireActivity(), "Link Copied to clipboard", Toast.LENGTH_SHORT).show()
     }
 
     linearLayoutPackage.setOnClickListener {
-      move = Intent(activity!!, PackageActivity::class.java)
+      move = Intent(requireActivity(), PackageActivity::class.java)
       startActivity(move)
-      activity!!.finish()
+      requireActivity().finish()
     }
 
     linearLayoutTransfer.setOnClickListener {
-      move = Intent(activity!!, TransferActivity::class.java)
+      move = Intent(requireActivity(), TransferActivity::class.java)
       startActivity(move)
-      activity!!.finish()
+      requireActivity().finish()
     }
 
     linearLayoutLedger.setOnClickListener {
-      move = Intent(activity!!, LedgerActivity::class.java)
+      move = Intent(requireActivity(), LedgerActivity::class.java)
       startActivity(move)
-      activity!!.finish()
+      requireActivity().finish()
     }
 
     getDashboard()
@@ -140,11 +140,11 @@ class HomeFragment : Fragment() {
       val handleError = HandleError(it).result()
       if (handleError.getBoolean("logout")) {
         user.clear()
-        move = Intent(activity!!, LoginActivity::class.java)
+        move = Intent(requireActivity(), LoginActivity::class.java)
         startActivity(move)
-        activity!!.finish()
+        requireActivity().finishAffinity()
       } else {
-        Toast.makeText(activity!!, handleError.getString("message"), Toast.LENGTH_LONG).show()
+        Toast.makeText(requireActivity(), handleError.getString("message"), Toast.LENGTH_LONG).show()
       }
 
       loading.closeDialog()

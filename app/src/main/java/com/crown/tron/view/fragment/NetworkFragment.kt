@@ -1,5 +1,6 @@
 package com.crown.tron.view.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,12 +26,13 @@ class NetworkFragment : Fragment() {
   private lateinit var webContent: WebView
   private lateinit var move: Intent
 
+  @SuppressLint("SetJavaScriptEnabled")
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_network, container, false)
 
-    user = User(activity!!)
-    request = Volley.newRequestQueue(activity!!)
-    loading = Loading(activity!!)
+    user = User(requireActivity())
+    request = Volley.newRequestQueue(requireActivity())
+    loading = Loading(requireActivity())
 
     webContent = view.findViewById(R.id.webViewContent)
 
@@ -62,11 +64,11 @@ class NetworkFragment : Fragment() {
       val handleError = HandleError(it).result()
       if (handleError.getBoolean("logout")) {
         user.clear()
-        move = Intent(activity!!, LoginActivity::class.java)
+        move = Intent(requireActivity(), LoginActivity::class.java)
         startActivity(move)
-        activity!!.finish()
+        requireActivity().finishAffinity()
       } else {
-        Toast.makeText(activity!!, handleError.getString("message"), Toast.LENGTH_LONG).show()
+        Toast.makeText(requireActivity(), handleError.getString("message"), Toast.LENGTH_LONG).show()
       }
 
       loading.closeDialog()

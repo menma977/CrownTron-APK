@@ -36,9 +36,9 @@ class AddUserFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_add_user, container, false)
 
-    user = User(activity!!)
-    request = Volley.newRequestQueue(activity!!)
-    loading = Loading(activity!!)
+    user = User(requireActivity())
+    request = Volley.newRequestQueue(requireActivity())
+    loading = Loading(requireActivity())
 
     name = view.findViewById(R.id.editTextName)
     username = view.findViewById(R.id.editTextUsername)
@@ -61,17 +61,17 @@ class AddUserFragment : Fragment() {
         position,
         user.getString("token")
       ).call({
-        Toast.makeText(activity!!, it.getString("message"), Toast.LENGTH_LONG).show()
+        Toast.makeText(requireActivity(), it.getString("message"), Toast.LENGTH_LONG).show()
         loading.closeDialog()
       }, {
         val handleError = HandleError(it).result()
         if (handleError.getBoolean("logout")) {
           user.clear()
-          move = Intent(activity!!, LoginActivity::class.java)
+          move = Intent(requireActivity(), LoginActivity::class.java)
           startActivity(move)
-          activity!!.finish()
+          requireActivity().finishAffinity()
         } else {
-          Toast.makeText(activity!!, handleError.getString("message"), Toast.LENGTH_LONG).show()
+          Toast.makeText(requireActivity(), handleError.getString("message"), Toast.LENGTH_LONG).show()
         }
         loading.closeDialog()
       })

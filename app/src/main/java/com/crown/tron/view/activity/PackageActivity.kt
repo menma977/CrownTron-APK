@@ -54,8 +54,6 @@ class PackageActivity : AppCompatActivity() {
           Package(
             item.getInt("id"),
             item.getString("name"),
-            item.getString("monthly_profit") + " TRX/Month",
-            item.getString("description"),
             item.getString("target"),
           )
         )

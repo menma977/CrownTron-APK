@@ -12,34 +12,10 @@
 
   <Space
       android:layout_width="match_parent"
-      android:layout_height="5dp"/>
-
-  <TextView
-      android:id="@+id/name"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="2sp"
-      android:text="@string/name"
-      android:textSize="18sp"
-      android:textAlignment="center"/>
-
-  <Space
-      android:layout_width="match_parent"
-      android:layout_height="5dp"/>
-
-  <View
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:background="@color/primary.light"
-      android:layout_marginStart="5dp"
-      android:layout_marginEnd="5dp"/>
-
-  <Space
-      android:layout_width="match_parent"
       android:layout_height="20dp"/>
 
   <TextView
-      android:id="@+id/profit"
+      android:id="@+id/name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="2sp"
@@ -50,29 +26,6 @@
   <Space
       android:layout_width="match_parent"
       android:layout_height="20dp"/>
-
-  <View
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:background="@color/primary.light"
-      android:layout_marginStart="5dp"
-      android:layout_marginEnd="5dp"/>
-
-  <Space
-      android:layout_width="match_parent"
-      android:layout_height="5dp"/>
-
-  <TextView
-      android:id="@+id/description"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:padding="2sp"
-      android:text="@string/total_profit"
-      android:textAlignment="center"/>
-
-  <Space
-      android:layout_width="match_parent"
-      android:layout_height="5dp"/>
 
   <View
       android:layout_width="match_parent"

@@ -5,8 +5,10 @@
   <string name="password">Password</string>
   <string name="ex_balance">0 TRX</string>
   <string name="transfer">Transfer</string>
+  <string name="transfer_pin">Transfer Pin</string>
   <string name="amount">Amount</string>
   <string name="wallet">Wallet</string>
+  <string name="wallet_pin">Wallet Pin</string>
   <string name="description">Description</string>
   <string name="at">At</string>
   <string name="zero">0</string>
@@ -32,4 +34,5 @@
   <string name="ledger">Ledger</string>
   <string name="tron">Tron</string>
   <string name="buy">Buy</string>
+  <string name="pin">PIN</string>
 </resources>

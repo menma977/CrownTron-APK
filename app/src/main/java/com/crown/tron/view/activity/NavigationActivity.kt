@@ -48,9 +48,9 @@ class NavigationActivity : AppCompatActivity() {
     textViewUsername.text = user.getString("username")
 
     imageButtonLogout.setOnClickListener {
+      LogoutController(request).invoke(user.getString("token")).call({}, {})
       user.clear()
       move = Intent(this, LoginActivity::class.java)
-      LogoutController(request).invoke(user.getString("token")).call({}, {})
       startActivity(move)
       finish()
     }

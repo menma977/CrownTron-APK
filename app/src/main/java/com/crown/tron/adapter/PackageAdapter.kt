@@ -25,6 +25,7 @@ class PackageAdapter(private var context: Context, private var token: String) : 
 
   override fun onBindViewHolder(holder: PackageHolder, position: Int) {
     holder.name.text = dataSet[position].name
+    holder.description.text = dataSet[position].description
     holder.maxProfit.text = dataSet[position].maxProfit
     holder.buttonBuy.setOnClickListener {
       val request = Volley.newRequestQueue(context)

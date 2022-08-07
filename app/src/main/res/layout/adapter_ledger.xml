@@ -19,6 +19,26 @@
       android:textAlignment="center"/>
 
   <TextView
+      android:id="@+id/income"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:padding="2sp"
+      android:text="@string/description"
+      android:textSize="11sp"
+      android:textAlignment="center"/>
+
+  <TextView
+      android:id="@+id/outcome"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:padding="2sp"
+      android:text="@string/description"
+      android:textSize="11sp"
+      android:textAlignment="center"/>
+
+  <TextView
       android:id="@+id/date"
       android:layout_width="0dp"
       android:layout_height="wrap_content"

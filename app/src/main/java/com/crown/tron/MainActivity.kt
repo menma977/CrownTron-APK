@@ -1,15 +1,14 @@
 package com.crown.tron
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.crown.tron.controller.ValidateController
 import com.crown.tron.model.User
-import com.crown.tron.view.HomeActivity
-import com.crown.tron.view.LoginActivity
+import com.crown.tron.view.activity.LoginActivity
+import com.crown.tron.view.activity.NavigationActivity
 
 class MainActivity : AppCompatActivity() {
   private lateinit var request: RequestQueue
@@ -23,12 +22,10 @@ class MainActivity : AppCompatActivity() {
     user = User(this)
     request = Volley.newRequestQueue(this)
 
-    Log.d("MainActivity", user.getString("token"))
-
     if (user.findId("token")) {
       ValidateController(request).invoke(user.getString("token")).call({
         if (it.getBoolean("active")) {
-          move = Intent(applicationContext, HomeActivity::class.java)
+          move = Intent(applicationContext, NavigationActivity::class.java)
           startActivity(move)
           finish()
         } else {

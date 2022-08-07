@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1sp"
+    android:background="@drawable/card_dark"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_margin="10dp">
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="20dp"/>
+
+  <TextView
+      android:id="@+id/name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="2sp"
+      android:text="@string/total_profit"
+      android:textSize="24sp"
+      android:textAlignment="center"/>
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="20dp"/>
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/primary.light"
+      android:layout_marginStart="5dp"
+      android:layout_marginEnd="5dp"/>
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="5dp"/>
+
+  <TextView
+      android:id="@+id/maxProfit"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="2sp"
+      android:text="@string/total_profit"
+      android:textAlignment="center"/>
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="20dp"/>
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:text="@string/buy"
+      android:layout_width="match_parent"
+      android:layout_height="30dp"
+      android:minWidth="120dp"
+      android:id="@+id/buttonBuy"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="10dp"
+      android:background="@drawable/button_default"
+      android:textColor="@color/resources.text"/>
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="10dp"/>
+
+</LinearLayout>

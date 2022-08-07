@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.AddUserFragment">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/container_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/card_default"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="40dp"
+        android:elevation="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        tools:ignore="UselessParent">
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="10dp"/>
+
+      <TextView
+          android:text="@string/add_user"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/accent"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          android:gravity="center"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="5dp"/>
+
+      <TextView
+          android:text="@string/name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/resources.text.dark"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="5dp"/>
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="textPersonName"
+          android:ems="10"
+          android:id="@+id/editTextName"
+          android:background="@drawable/edit_text_default"
+          android:hint="@string/name"
+          android:autofillHints="username"
+          android:textColor="@color/resources.text.dark"
+          android:drawablePadding="10dp"
+          android:textColorHint="@color/background.dark"
+          android:drawableTint="@color/resources.icon.dark"
+          android:layout_margin="5dp"
+          android:elevation="5dp"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+      <TextView
+          android:text="@string/username"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/resources.text.dark"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="5dp"/>
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:ems="10"
+          android:id="@+id/editTextUsername"
+          android:background="@drawable/edit_text_default"
+          android:hint="@string/username"
+          android:autofillHints="username"
+          android:textColor="@color/resources.text.dark"
+          android:drawablePadding="10dp"
+          android:textColorHint="@color/background.dark"
+          android:drawableTint="@color/resources.icon.dark"
+          android:layout_margin="5dp"
+          android:elevation="5dp"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+      <TextView
+          android:text="@string/email"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/resources.text.dark"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="5dp"/>
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="textEmailAddress"
+          android:ems="10"
+          android:id="@+id/editTextEmail"
+          android:background="@drawable/edit_text_default"
+          android:hint="@string/email"
+          android:autofillHints="password"
+          android:textColor="@color/resources.text.dark"
+          android:drawablePadding="10dp"
+          android:textColorHint="@color/background.dark"
+          android:drawableTint="@color/resources.icon.dark"
+          android:layout_margin="5dp"
+          android:elevation="5dp"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+      <TextView
+          android:text="@string/password"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/resources.text.dark"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="5dp"/>
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="textPassword"
+          android:ems="10"
+          android:id="@+id/editTextPassword"
+          android:background="@drawable/edit_text_default"
+          android:hint="@string/password"
+          android:autofillHints="password"
+          android:textColor="@color/resources.text.dark"
+          android:drawablePadding="10dp"
+          android:textColorHint="@color/background.dark"
+          android:drawableTint="@color/resources.icon.dark"
+          android:layout_margin="5dp"
+          android:elevation="5dp"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+      <TextView
+          android:text="@string/password_confirmation"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/resources.text.dark"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="5dp"/>
+
+      <EditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="textPassword"
+          android:ems="10"
+          android:id="@+id/editTextPasswordConfirmation"
+          android:background="@drawable/edit_text_default"
+          android:hint="@string/password_confirmation"
+          android:autofillHints="password confirmation"
+          android:textColor="@color/resources.text.dark"
+          android:drawablePadding="10dp"
+          android:textColorHint="@color/background.dark"
+          android:drawableTint="@color/resources.icon.dark"
+          android:layout_margin="5dp"
+          android:elevation="5dp"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+      <TextView
+          android:text="@string/position"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/resources.text.dark"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="5dp"/>
+
+      <RadioGroup
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+
+        <RadioButton
+            android:text="@string/left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/radioButtonLeft"
+            android:background="@drawable/button_default"
+            android:textColor="@color/resources.text"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginBottom="5dp"
+            android:checked="true"
+            android:buttonTint="@color/resources.text"
+            android:elevation="5dp"/>
+
+        <RadioButton
+            android:text="@string/right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/radioButtonRight"
+            android:background="@drawable/button_default"
+            android:textColor="@color/resources.text"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginBottom="5dp"
+            android:buttonTint="@color/resources.text"
+            android:elevation="5dp"/>
+
+      </RadioGroup>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="@color/primary.light"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="15dp"/>
+
+      <androidx.appcompat.widget.AppCompatButton
+          android:text="@string/register"
+          android:layout_width="match_parent"
+          android:layout_height="30dp"
+          android:minWidth="120dp"
+          android:id="@+id/buttonSend"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:background="@drawable/button_default"
+          android:textColor="@color/resources.text"
+          android:layout_margin="5dp"
+          android:elevation="5dp"/>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="30dp"/>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</ScrollView>

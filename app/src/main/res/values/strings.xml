@@ -10,21 +10,13 @@
   <string name="description">Description</string>
   <string name="at">At</string>
   <string name="zero">0</string>
-  <string name="data_null">-</string>
   <string name="claim">Claim</string>
-  <string name="history">History</string>
   <string name="profit_balance">Profit Balance</string>
   <string name="referral">Referral</string>
   <string name="copy">Copy</string>
   <string name="profit_package">Profit Package</string>
   <string name="profit_pairing">Profit Pairing</string>
   <string name="total_profit">Total Profit</string>
-  <string name="total_profit_left">Total Profit Left</string>
-  <string name="total_profit_right">Total Profit right</string>
-  <string name="profit_left">Profit Left</string>
-  <string name="profit_right">Profit Right</string>
-  <string name="user_left">User Left</string>
-  <string name="user_right">User Right</string>
   <string name="register">Register</string>
   <string name="name">Name</string>
   <string name="email">Email</string>
@@ -32,4 +24,12 @@
   <string name="position">Position</string>
   <string name="left">Left</string>
   <string name="right">Right</string>
+  <string name="logout">logout</string>
+  <string name="home">home</string>
+  <string name="network">Network</string>
+  <string name="add_user">Add User</string>
+  <string name="packages">Packages</string>
+  <string name="ledger">Ledger</string>
+  <string name="tron">Tron</string>
+  <string name="buy">Buy</string>
 </resources>

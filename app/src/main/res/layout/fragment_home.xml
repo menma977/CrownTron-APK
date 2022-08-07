@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.HomeFragment">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="10dp">
+
+      <TextView
+          android:text="@string/referral"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:id="@+id/textViewReferral"
+          android:layout_weight="1"
+          android:textColor="@color/resources.text.dark"
+          android:background="@drawable/edit_text_default"
+          android:layout_margin="8dp"
+          android:elevation="5dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintEnd_toStartOf="@id/buttonCopyReferral"
+          app:layout_constraintBottom_toBottomOf="parent"/>
+
+      <androidx.appcompat.widget.AppCompatButton
+          android:text="@string/copy"
+          android:layout_width="wrap_content"
+          android:layout_height="30dp"
+          android:id="@+id/buttonCopyReferral"
+          android:background="@drawable/button_default"
+          android:textColor="@color/resources.text"
+          android:layout_margin="8dp"
+          android:elevation="5dp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintStart_toEndOf="@id/textViewReferral"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          tools:ignore="TouchTargetSizeCheck"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+      <ProgressBar
+          android:id="@+id/progressBar"
+          style="?android:attr/progressBarStyleHorizontal"
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:indeterminate="false"
+          android:max="100"
+          android:progress="50"
+          android:progressDrawable="@drawable/progress_bar"/>
+
+      <TextView
+          android:id="@+id/textViewProgress"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentStart="true"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentBottom="true"
+          android:layout_marginStart="20dp"
+          android:layout_marginTop="0dp"
+          android:layout_marginEnd="0dp"
+          android:layout_marginBottom="5dp"
+          android:gravity="center"
+          android:text="@string/zero"
+          android:textColor="@color/resources.text"
+          android:textSize="10sp"
+          android:textStyle="bold"
+          tools:ignore="SmallSp"/>
+
+      <TextView
+          android:id="@+id/textViewTarget"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentBottom="true"
+          android:layout_marginStart="0dp"
+          android:layout_marginTop="0dp"
+          android:layout_marginEnd="20dp"
+          android:layout_marginBottom="5dp"
+          android:gravity="center"
+          android:text="@string/zero"
+          android:textColor="@color/resources.text"
+          android:textSize="10sp"
+          android:textStyle="bold"
+          tools:ignore="RelativeOverlap,SmallSp"/>
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:elevation="10dp"
+        android:background="@drawable/card_default">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:gravity="center">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_tron"
+            android:padding="5dp"
+            android:contentDescription="@string/packages"
+            android:elevation="5dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+          <TextView
+              android:text="@string/tron"
+              android:textColor="@color/resources.text.dark"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:background="@color/primary.light"
+              android:layout_marginStart="5dp"
+              android:layout_marginEnd="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewBalance"
+              android:text="@string/zero"
+              android:textColor="@color/resources.text.dark"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewAddress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/barcode"
+            android:padding="5dp"
+            android:contentDescription="@string/packages"
+            app:tint="@color/resources.text.dark"/>
+
+      </LinearLayout>
+
+      <Space
+          android:layout_width="match_parent"
+          android:layout_height="10dp"/>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:baselineAligned="false"
+          tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPackage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            tools:ignore="UseCompoundDrawables">
+
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:src="@drawable/ic_baseline_apps"
+              app:tint="@color/resources.text"
+              android:background="@drawable/button_default"
+              android:padding="10dp"
+              android:contentDescription="@string/packages"
+              android:elevation="5dp"/>
+
+          <TextView
+              android:text="@string/packages"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textColor="@color/resources.text.dark"
+              android:layout_marginTop="5dp"
+              android:textAlignment="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTransfer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            tools:ignore="UseCompoundDrawables">
+
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:src="@drawable/ic_baseline_near_me"
+              app:tint="@color/resources.text"
+              android:background="@drawable/button_default"
+              android:padding="10dp"
+              android:contentDescription="@string/transfer"
+              android:elevation="5dp"/>
+
+          <TextView
+              android:text="@string/transfer"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textColor="@color/resources.text.dark"
+              android:layout_marginTop="5dp"
+              android:textAlignment="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutLedger"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            tools:ignore="UseCompoundDrawables">
+
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:src="@drawable/ic_baseline_collections_bookmark"
+              app:tint="@color/resources.text"
+              android:background="@drawable/button_default"
+              android:padding="10dp"
+              android:contentDescription="@string/ledger"
+              android:elevation="5dp"/>
+
+          <TextView
+              android:text="@string/ledger"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textColor="@color/resources.text.dark"
+              android:layout_marginTop="5dp"
+              android:textAlignment="center"/>
+
+        </LinearLayout>
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/lists_container"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@drawable/card_light"
+          android:layout_margin="10dp"
+          android:elevation="5dp"
+          android:padding="10dp"/>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</ScrollView>

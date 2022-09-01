@@ -1,5 +1,6 @@
 package com.crown.tron.view.activity
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.budiyev.android.codescanner.*
+import com.crown.tron.MainActivity
 import com.crown.tron.R
 import com.crown.tron.controller.TronController
 import com.crown.tron.http.web.HandleError
@@ -28,9 +30,15 @@ class TransferActivity : AppCompatActivity() {
   private lateinit var balanceText: EditText
   private lateinit var send: Button
 
+  private var type: Int = 0
+  private var typeCoin: String = "TRX"
+
+  @SuppressLint("SetTextI18n")
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_transfer)
+
+    type = intent.getIntExtra("type", 0)
 
     user = User(this)
     loading = Loading(this)
@@ -47,9 +55,19 @@ class TransferActivity : AppCompatActivity() {
 
     startScanning()
 
+    typeCoin = if (type == 0) {
+      "TRX"
+    } else {
+      "USDT"
+    }
+
     TronController(request).index(user.getString("token")).call({
       wallet.text = it.getString("address")
-      val localBalance = it.getString("balance").toString() + " TRX"
+      val localBalance: String = if (type == 0) {
+        it.getJSONObject("balance").getString("tron") + " " + typeCoin
+      } else {
+        it.getJSONObject("balance").getString("usdt") + " " + typeCoin
+      }
       balance.text = localBalance
       loading.closeDialog()
     }, {
@@ -62,7 +80,7 @@ class TransferActivity : AppCompatActivity() {
       } else {
         Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_LONG).show()
         wallet.text = "-"
-        balance.text = "0 TRX"
+        balance.text = "0 $typeCoin"
       }
       loading.closeDialog()
     })
@@ -78,9 +96,11 @@ class TransferActivity : AppCompatActivity() {
       loading.openDialog()
       val to = walletText.text.toString()
       val amount = balanceText.text.toString()
-      TronController(request).store(user.getString("token"), to, amount).call({
+      TronController(request).store(user.getString("token"), to, amount, type).call({
         Toast.makeText(this, "the transaction is being processed please wait a moment", Toast.LENGTH_LONG).show()
         loading.closeDialog()
+        finishAffinity()
+        startActivity(Intent(this, MainActivity::class.java))
       }, {
         val handleError = HandleError(it).result()
         if (handleError.getBoolean("logout")) {

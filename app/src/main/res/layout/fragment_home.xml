@@ -145,6 +145,59 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:src="@drawable/usdt"
+            android:padding="5dp"
+            android:contentDescription="@string/packages"
+            android:elevation="5dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+          <TextView
+              android:text="@string/tron"
+              android:textColor="@color/resources.text.dark"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:background="@color/primary.light"
+              android:layout_marginStart="5dp"
+              android:layout_marginEnd="5dp"/>
+
+          <TextView
+              android:id="@+id/textViewBalanceUsdt"
+              android:text="@string/zero"
+              android:textColor="@color/resources.text.dark"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewAddressUsdt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/barcode"
+            android:padding="5dp"
+            android:contentDescription="@string/packages"
+            app:tint="@color/resources.text.dark"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:gravity="center">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:padding="5dp"
             android:contentDescription="@string/packages"
             android:elevation="5dp"
@@ -231,6 +284,45 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayoutLedger"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            tools:ignore="UseCompoundDrawables">
+
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:src="@drawable/ic_baseline_collections_bookmark"
+              app:tint="@color/resources.text"
+              android:background="@drawable/button_default"
+              android:padding="10dp"
+              android:contentDescription="@string/ledger"
+              android:elevation="5dp"/>
+
+          <TextView
+              android:text="@string/ledger"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textColor="@color/resources.text.dark"
+              android:layout_marginTop="5dp"
+              android:textAlignment="center"/>
+
+        </LinearLayout>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:orientation="horizontal"
+          android:baselineAligned="false"
+          tools:ignore="UselessParent">
+
+        <LinearLayout
             android:id="@+id/linearLayoutTransfer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -242,7 +334,7 @@
           <ImageView
               android:layout_width="50dp"
               android:layout_height="50dp"
-              android:src="@drawable/ic_baseline_near_me"
+              android:src="@drawable/ic_tron"
               app:tint="@color/resources.text"
               android:background="@drawable/button_default"
               android:padding="10dp"
@@ -250,7 +342,36 @@
               android:elevation="5dp"/>
 
           <TextView
-              android:text="@string/transfer"
+              android:text="@string/transfer_tron"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textColor="@color/resources.text.dark"
+              android:layout_marginTop="5dp"
+              android:textAlignment="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTransferUsdt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            tools:ignore="UseCompoundDrawables">
+
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:src="@drawable/usdt"
+              app:tint="@color/resources.text"
+              android:background="@drawable/button_default"
+              android:padding="10dp"
+              android:contentDescription="@string/transfer_usdt"
+              android:elevation="5dp"/>
+
+          <TextView
+              android:text="@string/transfer_usdt"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:textColor="@color/resources.text.dark"
@@ -280,35 +401,6 @@
 
           <TextView
               android:text="@string/transfer_pin"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:textColor="@color/resources.text.dark"
-              android:layout_marginTop="5dp"
-              android:textAlignment="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayoutLedger"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            tools:ignore="UseCompoundDrawables">
-
-          <ImageView
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:src="@drawable/ic_baseline_collections_bookmark"
-              app:tint="@color/resources.text"
-              android:background="@drawable/button_default"
-              android:padding="10dp"
-              android:contentDescription="@string/ledger"
-              android:elevation="5dp"/>
-
-          <TextView
-              android:text="@string/ledger"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:textColor="@color/resources.text.dark"

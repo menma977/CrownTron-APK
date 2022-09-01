@@ -44,22 +44,6 @@
           android:layout_height="5dp"/>
 
       <TextView
-          android:text="@string/packages"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:textColor="@color/resources.text.dark"/>
-
-      <Space
-          android:layout_width="match_parent"
-          android:layout_height="5dp"/>
-
-      <Spinner
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/spinnerPackage"
-          />
-
-      <TextView
           android:text="@string/name"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"

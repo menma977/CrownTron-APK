@@ -3,8 +3,10 @@
   <string name="login">LOGIN</string>
   <string name="username">Username</string>
   <string name="password">Password</string>
-  <string name="ex_balance">0 TRX</string>
+  <string name="ex_balance">0</string>
   <string name="transfer">Transfer</string>
+  <string name="transfer_tron">Transfer TRON</string>
+  <string name="transfer_usdt">Transfer USDT</string>
   <string name="transfer_pin">Transfer Pin</string>
   <string name="amount">Amount</string>
   <string name="wallet">Wallet</string>

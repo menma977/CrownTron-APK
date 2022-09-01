@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.budiyev.android.codescanner.*
+import com.crown.tron.MainActivity
 import com.crown.tron.R
 import com.crown.tron.controller.PinController
 import com.crown.tron.http.web.HandleError
@@ -87,6 +88,8 @@ class TransferPinActivity : AppCompatActivity() {
       PinController(request).store(user.getString("token"), to, amount).call({
         Toast.makeText(this, "the transaction is being processed please wait a moment", Toast.LENGTH_LONG).show()
         loading.closeDialog()
+        finishAffinity()
+        startActivity(Intent(this, MainActivity::class.java))
       }, {
         val handleError = HandleError(it).result()
         if (handleError.getBoolean("logout")) {

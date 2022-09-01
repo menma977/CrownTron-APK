@@ -24,10 +24,8 @@ class LedgerActivity : AppCompatActivity() {
   private lateinit var loading: Loading
   private lateinit var move: Intent
   private lateinit var textViewProfitBalance: TextView
-  private lateinit var textViewProfitPackage: TextView
   private lateinit var textViewProfitPairing: TextView
   private lateinit var buttonProfitBalance: Button
-  private lateinit var buttonProfitPackage: Button
   private lateinit var buttonProfitPairing: Button
   private lateinit var ledgerAdapter: LedgerAdapter
   private lateinit var listViewContainer: RecyclerView
@@ -41,11 +39,9 @@ class LedgerActivity : AppCompatActivity() {
     loading = Loading(this)
 
     textViewProfitBalance = findViewById(R.id.textViewProfitBalance)
-    textViewProfitPackage = findViewById(R.id.textViewProfitPackage)
     textViewProfitPairing = findViewById(R.id.textViewProfitPairing)
 
     buttonProfitBalance = findViewById(R.id.buttonClaimProfitBalance)
-    buttonProfitPackage = findViewById(R.id.buttonClaimProfitPackage)
     buttonProfitPairing = findViewById(R.id.buttonClaimProfitPairing)
 
     listViewContainer = findViewById(R.id.lists_container)
@@ -62,26 +58,6 @@ class LedgerActivity : AppCompatActivity() {
     buttonProfitBalance.setOnClickListener {
       loading.openDialog()
       LedgerController(request).withdraw(user.getString("token")).call({
-        Toast.makeText(this, it.getString("message"), Toast.LENGTH_SHORT).show()
-        setLedger()
-      }, {
-        val handleError = HandleError(it).result()
-        if (handleError.getBoolean("logout")) {
-          user.clear()
-          move = Intent(this, LoginActivity::class.java)
-          startActivity(move)
-          finish()
-        } else {
-          Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_SHORT).show()
-        }
-
-        loading.closeDialog()
-      })
-    }
-
-    buttonProfitPackage.setOnClickListener {
-      loading.openDialog()
-      LedgerController(request).claim(user.getString("token"), 2).call({
         Toast.makeText(this, it.getString("message"), Toast.LENGTH_SHORT).show()
         setLedger()
       }, {
@@ -126,7 +102,6 @@ class LedgerActivity : AppCompatActivity() {
   private fun setLedger() {
     LedgerController(request).invoke(user.getString("token")).call({
       textViewProfitBalance.text = it.getJSONObject("ledger").getString("balance")
-      textViewProfitPackage.text = it.getJSONObject("ledger").getString("package")
       textViewProfitPairing.text = it.getJSONObject("ledger").getString("profit")
 
       val list = it.getJSONObject("ledger").getJSONArray("all")

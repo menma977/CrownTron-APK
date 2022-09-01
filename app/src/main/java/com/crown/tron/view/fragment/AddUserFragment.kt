@@ -21,7 +21,6 @@ class AddUserFragment : Fragment() {
   private lateinit var request: RequestQueue
   private lateinit var loading: Loading
   private lateinit var move: Intent
-  private lateinit var spinnerPackage: Spinner
   private lateinit var name: EditText
   private lateinit var username: EditText
   private lateinit var email: EditText
@@ -41,7 +40,6 @@ class AddUserFragment : Fragment() {
     request = Volley.newRequestQueue(requireActivity())
     loading = Loading(requireActivity())
 
-    spinnerPackage = view.findViewById(R.id.spinnerPackage)
     name = view.findViewById(R.id.editTextName)
     username = view.findViewById(R.id.editTextUsername)
     email = view.findViewById(R.id.editTextEmail)
@@ -62,9 +60,6 @@ class AddUserFragment : Fragment() {
         packageNameList.add(description)
       }
 
-      val adapterName = ArrayAdapter(requireActivity(), R.layout.adapter_package_spinner, packageNameList)
-      spinnerPackage.adapter = adapterName
-
       loading.closeDialog()
     }, {
       val handleError = HandleError(it).result()
@@ -83,7 +78,6 @@ class AddUserFragment : Fragment() {
       loading.openDialog()
       val position = if (positionLeft.isChecked) "left" else "right"
       UserController(request).invoke(
-        packageIdList[spinnerPackage.selectedItemPosition],
         name.text.toString(),
         username.text.toString(),
         email.text.toString(),
@@ -92,6 +86,12 @@ class AddUserFragment : Fragment() {
         position,
         user.getString("token")
       ).call({
+        name.text.clear()
+        username.text.clear()
+        email.text.clear()
+        password.text.clear()
+        confirm.text.clear()
+
         Toast.makeText(requireActivity(), it.getString("message"), Toast.LENGTH_LONG).show()
         loading.closeDialog()
       }, {

@@ -13,11 +13,10 @@ class UserController(private val request: RequestQueue) {
     token
   )
 
-  operator fun invoke(packageId: Int, name: String, username: String, email: String, password: String, password_confirmation: String, position: String, token: String) = Post(
+  operator fun invoke(name: String, username: String, email: String, password: String, password_confirmation: String, position: String, token: String) = Post(
     request,
     "user.store",
     JSONObject()
-      .put("package", packageId)
       .put("name", name)
       .put("username", username)
       .put("email", email)

@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
@@ -33,6 +30,9 @@ class AddUserFragment : Fragment() {
   private lateinit var positionRight: RadioButton
   private lateinit var send: Button
 
+  private var packageIdList = ArrayList<Int>()
+  private var packageNameList = ArrayList<String>()
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_add_user, container, false)
 
@@ -49,6 +49,31 @@ class AddUserFragment : Fragment() {
     positionRight = view.findViewById(R.id.radioButtonRight)
     send = view.findViewById(R.id.buttonSend)
 
+    loading.openDialog()
+    UserController(request).create(user.getString("token")).call({
+      val listPackage = it.getJSONArray("packages")
+
+      for (i in 0 until listPackage.length()) {
+        val packages = listPackage.getJSONObject(i)
+        val description = packages.getString("name") + " | " + packages.getString("description")
+        packageIdList.add(packages.getInt("id"))
+        packageNameList.add(description)
+      }
+
+      loading.closeDialog()
+    }, {
+      val handleError = HandleError(it).result()
+      if (handleError.getBoolean("logout")) {
+        user.clear()
+        move = Intent(requireActivity(), LoginActivity::class.java)
+        startActivity(move)
+        requireActivity().finishAffinity()
+      } else {
+        Toast.makeText(requireActivity(), handleError.getString("message"), Toast.LENGTH_LONG).show()
+      }
+      loading.closeDialog()
+    })
+
     send.setOnClickListener {
       loading.openDialog()
       val position = if (positionLeft.isChecked) "left" else "right"
@@ -61,6 +86,12 @@ class AddUserFragment : Fragment() {
         position,
         user.getString("token")
       ).call({
+        name.text.clear()
+        username.text.clear()
+        email.text.clear()
+        password.text.clear()
+        confirm.text.clear()
+
         Toast.makeText(requireActivity(), it.getString("message"), Toast.LENGTH_LONG).show()
         loading.closeDialog()
       }, {

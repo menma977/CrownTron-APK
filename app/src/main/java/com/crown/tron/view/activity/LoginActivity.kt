@@ -54,8 +54,8 @@ class LoginActivity : AppCompatActivity() {
           user.setString("username", it.getJSONObject("user").getString("username"))
           user.setString("email", it.getJSONObject("user").getString("email"))
           user.setString("name", it.getJSONObject("user").getString("name"))
-          user.setString("referral", it.getJSONObject("user").getString("referral"))
           user.setString("address", it.getJSONObject("user").getString("address"))
+          user.setString("pin_address", it.getJSONObject("user").getString("pin_address"))
 
           loading.closeDialog()
           move = Intent(this, NavigationActivity::class.java)

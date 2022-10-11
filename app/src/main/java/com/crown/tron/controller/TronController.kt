@@ -12,10 +12,10 @@ class TronController(private val request: RequestQueue) {
     token
   )
 
-  fun store(token: String, wallet: String, amount: String) = Post(
+  fun store(token: String, wallet: String, amount: String, type: Int) = Post(
     request,
     "tron.store",
-    JSONObject().put("address", wallet).put("amount", amount),
+    JSONObject().put("address", wallet).put("amount", amount).put("type", type),
     token
   )
 }

@@ -28,6 +28,10 @@
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>
     <activity
+        android:name=".view.activity.TransferPinActivity"
+        android:exported="true"
+        android:theme="@style/Theme.CrownTron.NoActionBar"/>
+    <activity
         android:name=".view.activity.TransferActivity"
         android:exported="true"
         android:theme="@style/Theme.CrownTron.NoActionBar"/>

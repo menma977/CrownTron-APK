@@ -54,6 +54,7 @@ class PackageActivity : AppCompatActivity() {
           Package(
             item.getInt("id"),
             item.getString("name"),
+            item.getString("description"),
             item.getString("target"),
           )
         )

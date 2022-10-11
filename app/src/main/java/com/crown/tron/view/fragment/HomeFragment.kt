@@ -1,14 +1,11 @@
 package com.crown.tron.view.fragment
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,26 +19,27 @@ import com.crown.tron.modal.Loading
 import com.crown.tron.modal.WalletModal
 import com.crown.tron.model.History
 import com.crown.tron.model.User
-import com.crown.tron.view.activity.LoginActivity
-import com.crown.tron.view.activity.TransferActivity
-import com.crown.tron.view.activity.LedgerActivity
-import com.crown.tron.view.activity.PackageActivity
+import com.crown.tron.view.activity.*
 
 class HomeFragment : Fragment() {
   private lateinit var user: User
   private lateinit var request: RequestQueue
   private lateinit var loading: Loading
   private lateinit var move: Intent
-  private lateinit var textViewReferral: TextView
   private lateinit var textViewProgress: TextView
   private lateinit var textViewTarget: TextView
   private lateinit var textViewBalance: TextView
+  private lateinit var textViewBalanceUsdt: TextView
+  private lateinit var textViewPin: TextView
   private lateinit var progressBar: ProgressBar
-  private lateinit var buttonCopyReferral: Button
   private lateinit var linearLayoutPackage: LinearLayout
   private lateinit var linearLayoutTransfer: LinearLayout
+  private lateinit var linearLayoutTransferUsdt: LinearLayout
+  private lateinit var linearLayoutTransferPin: LinearLayout
   private lateinit var linearLayoutLedger: LinearLayout
   private lateinit var imageViewAddress: ImageView
+  private lateinit var imageViewAddressUsdt: ImageView
+  private lateinit var imageViewPinAddress: ImageView
   private lateinit var historyAdapter: HistoryAdapter
   private lateinit var listViewContainer: RecyclerView
 
@@ -53,17 +51,20 @@ class HomeFragment : Fragment() {
     loading = Loading(requireActivity())
 
     historyAdapter = HistoryAdapter()
-
-    textViewReferral = view.findViewById(R.id.textViewReferral)
     textViewProgress = view.findViewById(R.id.textViewProgress)
     textViewTarget = view.findViewById(R.id.textViewTarget)
     textViewBalance = view.findViewById(R.id.textViewBalance)
+    textViewBalanceUsdt = view.findViewById(R.id.textViewBalanceUsdt)
+    textViewPin = view.findViewById(R.id.textViewPin)
     progressBar = view.findViewById(R.id.progressBar)
-    buttonCopyReferral = view.findViewById(R.id.buttonCopyReferral)
     linearLayoutPackage = view.findViewById(R.id.linearLayoutPackage)
     linearLayoutTransfer = view.findViewById(R.id.linearLayoutTransfer)
+    linearLayoutTransferUsdt = view.findViewById(R.id.linearLayoutTransferUsdt)
+    linearLayoutTransferPin = view.findViewById(R.id.linearLayoutTransferPin)
     linearLayoutLedger = view.findViewById(R.id.linearLayoutLedger)
     imageViewAddress = view.findViewById(R.id.imageViewAddress)
+    imageViewAddressUsdt = view.findViewById(R.id.imageViewAddressUsdt)
+    imageViewPinAddress = view.findViewById(R.id.imageViewPinAddress)
 
     listViewContainer = view.findViewById<RecyclerView?>(R.id.lists_container).apply {
       layoutManager = LinearLayoutManager(requireActivity())
@@ -72,17 +73,16 @@ class HomeFragment : Fragment() {
 
     historyAdapter.clear()
 
-    textViewReferral.text = user.getString("referral")
-
     imageViewAddress.setOnClickListener {
-      WalletModal.show(requireActivity(), user.getString("address"))
+      WalletModal.show(requireActivity(), user.getString("address"), "Tron Address")
     }
 
-    buttonCopyReferral.setOnClickListener {
-      val clipboard = requireActivity().getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
-      val clip = ClipData.newPlainText("referral", textViewReferral.text)
-      clipboard.setPrimaryClip(clip)
-      Toast.makeText(requireActivity(), "Link Copied to clipboard", Toast.LENGTH_SHORT).show()
+    imageViewAddressUsdt.setOnClickListener {
+      WalletModal.show(requireActivity(), user.getString("address"), "Usdt/Tron Address")
+    }
+
+    imageViewPinAddress.setOnClickListener {
+      WalletModal.show(requireActivity(), user.getString("pin_address"), "Pin Address")
     }
 
     linearLayoutPackage.setOnClickListener {
@@ -93,6 +93,20 @@ class HomeFragment : Fragment() {
 
     linearLayoutTransfer.setOnClickListener {
       move = Intent(requireActivity(), TransferActivity::class.java)
+      move.putExtra("type", 0)
+      startActivity(move)
+      requireActivity().finish()
+    }
+
+    linearLayoutTransferUsdt.setOnClickListener {
+      move = Intent(requireActivity(), TransferActivity::class.java)
+      move.putExtra("type", 1)
+      startActivity(move)
+      requireActivity().finish()
+    }
+
+    linearLayoutTransferPin.setOnClickListener {
+      move = Intent(requireActivity(), TransferPinActivity::class.java)
       startActivity(move)
       requireActivity().finish()
     }
@@ -111,7 +125,9 @@ class HomeFragment : Fragment() {
   private fun getDashboard() {
     loading.openDialog()
     DashboardController(request).invoke(user.getString("token")).call({
-      textViewBalance.text = it.getJSONObject("tron").getString("balance")
+      textViewBalance.text = it.getJSONObject("balance").getString("tron")
+      textViewBalanceUsdt.text = it.getJSONObject("balance").getString("usdt")
+      textViewPin.text = it.getJSONObject("pin").getString("total")
       textViewTarget.text = it.getJSONObject("package").getString("target")
       textViewProgress.text = it.getJSONObject("package").getString("progress")
       progressBar.progress = it.getJSONObject("package").getInt("progress")

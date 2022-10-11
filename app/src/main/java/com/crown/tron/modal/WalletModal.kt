@@ -16,7 +16,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 object WalletModal {
   private val negativeButtonClick = { _: DialogInterface, _: Int -> }
 
-  fun show(context: Context, wallet: String) {
+  fun show(context: Context, wallet: String, name:String) {
     val builder = AlertDialog.Builder(context)
     val layout: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -29,7 +29,7 @@ object WalletModal {
     val bitmap = barcodeEncoder.encodeBitmap(wallet, BarcodeFormat.QR_CODE, 500, 500)
 
     imgWallet.setImageBitmap(bitmap)
-    title.text = "Your Wallet"
+    title.text = name
     textWallet.text = wallet
 
     val positiveButtonClick = { _: DialogInterface, _: Int ->

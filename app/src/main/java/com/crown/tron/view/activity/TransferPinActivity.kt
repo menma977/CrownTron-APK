@@ -5,19 +5,22 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.budiyev.android.codescanner.*
 import com.crown.tron.MainActivity
 import com.crown.tron.R
-import com.crown.tron.controller.TronController
+import com.crown.tron.controller.PinController
 import com.crown.tron.http.web.HandleError
 import com.crown.tron.modal.Loading
 import com.crown.tron.model.User
 
-class TransferActivity : AppCompatActivity() {
+class TransferPinActivity : AppCompatActivity() {
   private lateinit var user: User
   private lateinit var request: RequestQueue
   private lateinit var loading: Loading
@@ -30,15 +33,10 @@ class TransferActivity : AppCompatActivity() {
   private lateinit var balanceText: EditText
   private lateinit var send: Button
 
-  private var type: Int = 0
-  private var typeCoin: String = "TRX"
-
   @SuppressLint("SetTextI18n")
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_transfer)
-
-    type = intent.getIntExtra("type", 0)
+    setContentView(R.layout.activity_transfer_pin)
 
     user = User(this)
     loading = Loading(this)
@@ -55,19 +53,10 @@ class TransferActivity : AppCompatActivity() {
 
     startScanning()
 
-    typeCoin = if (type == 0) {
-      "TRX"
-    } else {
-      "USDT"
-    }
+    wallet.text = user.getString("pin_address")
 
-    TronController(request).index(user.getString("token")).call({
-      wallet.text = it.getString("address")
-      val localBalance: String = if (type == 0) {
-        it.getJSONObject("balance").getString("tron") + " " + typeCoin
-      } else {
-        it.getJSONObject("balance").getString("usdt") + " " + typeCoin
-      }
+    PinController(request).create(user.getString("token")).call({
+      val localBalance = it.getString("pin_value").toString() + " PIN"
       balance.text = localBalance
       loading.closeDialog()
     }, {
@@ -80,7 +69,7 @@ class TransferActivity : AppCompatActivity() {
       } else {
         Toast.makeText(this, handleError.getString("message"), Toast.LENGTH_LONG).show()
         wallet.text = "-"
-        balance.text = "0 $typeCoin"
+        balance.text = "0 PIN"
       }
       loading.closeDialog()
     })
@@ -96,7 +85,7 @@ class TransferActivity : AppCompatActivity() {
       loading.openDialog()
       val to = walletText.text.toString()
       val amount = balanceText.text.toString()
-      TronController(request).store(user.getString("token"), to, amount, type).call({
+      PinController(request).store(user.getString("token"), to, amount).call({
         Toast.makeText(this, "the transaction is being processed please wait a moment", Toast.LENGTH_LONG).show()
         loading.closeDialog()
         finishAffinity()

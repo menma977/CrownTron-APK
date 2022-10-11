@@ -1,6 +1,7 @@
 package com.crown.tron.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,7 @@ import com.crown.tron.R
 import com.crown.tron.adapter.view.HistoryHolder
 import com.crown.tron.model.History
 
-class HistoryAdapter : RecyclerView.Adapter<HistoryHolder>() {
+class HistoryAdapter(private var context: Context) : RecyclerView.Adapter<HistoryHolder>() {
   private val dataSet = ArrayList<History>()
 
   init {
@@ -24,8 +25,11 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryHolder>() {
 
   override fun onBindViewHolder(holder: HistoryHolder, position: Int) {
     holder.description.text = dataSet[position].description
+    holder.description.setTextColor(context.getColor(R.color.resources_text_dark))
     holder.date.text = dataSet[position].date
+    holder.date.setTextColor(context.getColor(R.color.resources_text_dark))
   }
+
   @SuppressLint("NotifyDataSetChanged")
   fun addItem(item: History) {
     dataSet.add(1, item)

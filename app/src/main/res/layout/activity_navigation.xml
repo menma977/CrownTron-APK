@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.NavigationActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/navigation_background">
 
   <LinearLayout
       android:id="@+id/header"
@@ -15,6 +15,7 @@
       android:orientation="horizontal"
       android:padding="10dp"
       android:gravity="center"
+      android:background="@color/primary.dark"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent">
@@ -55,7 +56,7 @@
         android:cropToPadding="true"
         android:layout_marginHorizontal="10dp"
         android:contentDescription="@string/logout"
-        app:tint="@color/resources.button.danger"/>
+        app:tint="@color/resources.text"/>
 
   </LinearLayout>
 
@@ -71,7 +72,7 @@
       app:layout_constraintVertical_bias="0.0"/>
 
   <LinearLayout
-      android:background="@color/background.dark"
+      android:background="@color/primary.dark"
       android:id="@+id/nav_view"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"

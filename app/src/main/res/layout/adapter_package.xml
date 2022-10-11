@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="1sp"
-    android:background="@drawable/card_dark"
+    android:background="@drawable/card_default"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="10dp"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:elevation="10dp">
 
   <Space
       android:layout_width="match_parent"
@@ -21,7 +22,8 @@
       android:padding="2sp"
       android:text="@string/total_profit"
       android:textSize="24sp"
-      android:textAlignment="center"/>
+      android:textAlignment="center"
+      android:textColor="@color/resources.text.dark"/>
 
   <Space
       android:layout_width="match_parent"
@@ -44,7 +46,8 @@
       android:layout_height="wrap_content"
       android:padding="2sp"
       android:text="@string/total_profit"
-      android:textAlignment="center"/>
+      android:textAlignment="center"
+      android:textColor="@color/resources.text.dark"/>
 
   <Space
       android:layout_width="match_parent"
@@ -67,7 +70,8 @@
       android:layout_height="wrap_content"
       android:padding="2sp"
       android:text="@string/total_profit"
-      android:textAlignment="center"/>
+      android:textAlignment="center"
+      android:textColor="@color/resources.text.dark"/>
 
   <Space
       android:layout_width="match_parent"

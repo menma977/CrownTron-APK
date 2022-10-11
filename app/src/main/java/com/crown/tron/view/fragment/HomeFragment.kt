@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
     request = Volley.newRequestQueue(requireActivity())
     loading = Loading(requireActivity())
 
-    historyAdapter = HistoryAdapter()
+    historyAdapter = HistoryAdapter(requireContext())
     textViewProgress = view.findViewById(R.id.textViewProgress)
     textViewTarget = view.findViewById(R.id.textViewTarget)
     textViewBalance = view.findViewById(R.id.textViewBalance)

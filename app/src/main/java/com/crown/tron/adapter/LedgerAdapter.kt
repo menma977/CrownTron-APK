@@ -1,6 +1,7 @@
 package com.crown.tron.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,7 @@ import com.crown.tron.R
 import com.crown.tron.adapter.view.LedgerHolder
 import com.crown.tron.model.Ledger
 
-class LedgerAdapter : RecyclerView.Adapter<LedgerHolder>() {
+class LedgerAdapter(private var context: Context) : RecyclerView.Adapter<LedgerHolder>() {
   private val dataSet = ArrayList<Ledger>()
 
   init {
@@ -24,10 +25,15 @@ class LedgerAdapter : RecyclerView.Adapter<LedgerHolder>() {
 
   override fun onBindViewHolder(holder: LedgerHolder, position: Int) {
     holder.description.text = dataSet[position].description
+    holder.description.setTextColor(context.getColor(R.color.primary))
     holder.income.text = dataSet[position].income
+    holder.income.setTextColor(context.getColor(R.color.primary))
     holder.outcome.text = dataSet[position].outcome
+    holder.outcome.setTextColor(context.getColor(R.color.primary))
     holder.date.text = dataSet[position].date
+    holder.date.setTextColor(context.getColor(R.color.primary))
   }
+
   @SuppressLint("NotifyDataSetChanged")
   fun addItem(item: Ledger) {
     dataSet.add(1, item)

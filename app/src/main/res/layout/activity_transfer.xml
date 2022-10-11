@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.TransferActivity"
-    android:background="@color/resources.background">
+    android:background="@drawable/transaction_background">
 
   <LinearLayout
       android:id="@+id/cardQr"
@@ -34,7 +34,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
-      android:background="@drawable/card_dark"
       android:layout_margin="10dp"
       android:padding="10dp"
       android:elevation="10dp"
@@ -49,18 +48,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewWallet"
         android:gravity="start"
-        android:textColor="@color/resources.text"
+        android:textColor="@color/primary.dark"
         android:textSize="12sp"
         android:text="@string/wallet"
         app:drawableStartCompat="@drawable/ic_core_wallet"
-        app:drawableTint="@color/resources.text"/>
+        app:drawableTint="@color/primary.dark"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewBalance"
         android:gravity="end"
-        android:textColor="@color/resources.text"
+        android:textColor="@color/primary.dark"
         android:textSize="18sp"
         android:text="@string/ex_balance"
         app:layout_constraintTop_toTopOf="parent"

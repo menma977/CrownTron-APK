@@ -11,16 +11,16 @@
   <color name="resources.button.default.click">#ffae21</color>
   <color name="resources.button.danger">#D7524F</color>
 
-  <color name="background.main">#2d3d88</color>
-  <color name="background.dark">#161E43</color>
+  <color name="background.main">#df2329</color>
+  <color name="background.dark">#be191e</color>
 
-  <color name="primary">#3579ff</color>
-  <color name="primary.dark">#2A5FC8</color>
-  <color name="primary.light">#568EFB</color>
+  <color name="primary">#df2329</color>
+  <color name="primary.dark">#C12025</color>
+  <color name="primary.light">#E14247</color>
 
-  <color name="secondary">#FFD541</color>
-  <color name="secondary.dark">#c88b05</color>
-  <color name="secondary.light">#ffed75</color>
+  <color name="secondary">#E6E6E6</color>
+  <color name="secondary.dark">#B8B8B8</color>
+  <color name="secondary.light">#FFFFFF</color>
 
   <color name="accent">#ffed75</color>
 </resources>

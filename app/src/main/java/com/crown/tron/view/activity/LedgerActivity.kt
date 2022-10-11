@@ -25,6 +25,7 @@ class LedgerActivity : AppCompatActivity() {
   private lateinit var move: Intent
   private lateinit var textViewProfitBalance: TextView
   private lateinit var textViewProfitPairing: TextView
+  private lateinit var textViewProfitReward: TextView
   private lateinit var buttonProfitBalance: Button
   private lateinit var buttonProfitPairing: Button
   private lateinit var ledgerAdapter: LedgerAdapter
@@ -40,13 +41,14 @@ class LedgerActivity : AppCompatActivity() {
 
     textViewProfitBalance = findViewById(R.id.textViewProfitBalance)
     textViewProfitPairing = findViewById(R.id.textViewProfitPairing)
+    textViewProfitReward = findViewById(R.id.textViewRewardPairing)
 
     buttonProfitBalance = findViewById(R.id.buttonClaimProfitBalance)
     buttonProfitPairing = findViewById(R.id.buttonClaimProfitPairing)
 
     listViewContainer = findViewById(R.id.lists_container)
 
-    ledgerAdapter = LedgerAdapter()
+    ledgerAdapter = LedgerAdapter(this)
 
     listViewContainer = findViewById<RecyclerView?>(R.id.lists_container).apply {
       layoutManager = LinearLayoutManager(this@LedgerActivity)
@@ -103,6 +105,7 @@ class LedgerActivity : AppCompatActivity() {
     LedgerController(request).invoke(user.getString("token")).call({
       textViewProfitBalance.text = it.getJSONObject("ledger").getString("balance")
       textViewProfitPairing.text = it.getJSONObject("ledger").getString("profit")
+      textViewProfitReward.text = it.getJSONObject("ledger").getString("reward")
 
       val list = it.getJSONObject("ledger").getJSONArray("all")
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.LedgerActivity"
-    android:background="@drawable/background"
+    android:background="@drawable/base_background"
     android:orientation="vertical">
 
   <Space
@@ -38,6 +38,7 @@
         android:text="@string/claim"
         android:layout_width="80dp"
         android:layout_height="24dp"
+        android:elevation="20dp"
         android:background="@drawable/button_default"/>
 
   </LinearLayout>
@@ -83,7 +84,46 @@
         android:text="@string/claim"
         android:layout_width="80dp"
         android:layout_height="24dp"
+        android:elevation="20dp"
         android:background="@drawable/button_default"/>
+
+  </LinearLayout>
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="5dp"/>
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/primary.light"
+      android:layout_marginStart="10dp"
+      android:layout_marginEnd="10dp"/>
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="5dp"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:gravity="center_vertical"
+      android:layout_marginHorizontal="20dp">
+
+    <TextView
+        android:text="@string/zero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewRewardPairing"
+        android:layout_marginEnd="10dp"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:text="@string/profit_reward"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
   </LinearLayout>
 
@@ -107,6 +147,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_margin="5dp"
+      android:background="@drawable/card_default"
       android:padding="10dp"/>
 
 </LinearLayout>

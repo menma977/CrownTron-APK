@@ -16,7 +16,8 @@
       android:padding="2sp"
       android:text="@string/description"
       android:textSize="11sp"
-      android:textAlignment="center"/>
+      android:textAlignment="center"
+      android:textColor="@color/primary.dark"/>
 
   <TextView
       android:id="@+id/date"
@@ -26,6 +27,7 @@
       android:padding="2sp"
       android:text="@string/at"
       android:textSize="11sp"
-      android:textAlignment="center"/>
+      android:textAlignment="center"
+      android:textColor="@color/primary.dark"/>
 
 </TableRow>

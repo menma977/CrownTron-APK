@@ -79,14 +79,17 @@ class NavigationActivity : AppCompatActivity() {
         val fragment = HomeFragment()
         addFragment(fragment)
       }
+
       1 -> {
         val fragment = NetworkFragment()
         addFragment(fragment)
       }
+
       2 -> {
         val fragment = AddUserFragment()
         addFragment(fragment)
       }
+
       else -> {
         val fragment = HomeFragment()
         addFragment(fragment)
@@ -98,11 +101,12 @@ class NavigationActivity : AppCompatActivity() {
     if (supportFragmentManager.backStackEntryCount == 1) {
       finish()
     } else {
+      super.onBackPressed()
+
       if (fragmentPosition > 0) {
         fragmentPosition = 0
-        navigation()
       }
-      super.onBackPressed()
+      navigation()
     }
   }
 

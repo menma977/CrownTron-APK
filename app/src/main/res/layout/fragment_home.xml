@@ -157,7 +157,7 @@
             android:orientation="vertical">
 
           <TextView
-              android:text="@string/tron"
+              android:text="@string/usdt"
               android:textColor="@color/resources.text.dark"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"/>

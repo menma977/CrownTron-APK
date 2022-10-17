@@ -7,7 +7,7 @@ class NetworkController(private val request: RequestQueue) {
 
   operator fun invoke(id: Int, token: String) = Get(
     request,
-    "network.${id}",
+    "network.${id}.${id}",
     token
   )
 }

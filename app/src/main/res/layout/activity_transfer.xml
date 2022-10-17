@@ -90,7 +90,8 @@
         android:drawablePadding="10dp"
         tools:ignore="LabelFor"
         android:hint="@string/wallet"
-        android:textColor="@color/resources.text.dark"/>
+        android:textColor="@color/resources.text.dark"
+        android:textColorHint="@color/primary.dark"/>
 
     <Space
         android:layout_width="match_parent"
@@ -107,6 +108,7 @@
         tools:ignore="LabelFor"
         android:hint="@string/amount"
         android:textColor="@color/resources.text.dark"
+        android:textColorHint="@color/primary.dark"
         android:autofillHints="amount"/>
 
     <Space

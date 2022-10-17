@@ -58,7 +58,7 @@ class NetworkFragment : Fragment() {
           return super.shouldInterceptRequest(view, request)
         }
       }
-      webContent.loadDataWithBaseURL(Url.web("binary.${user.getInteger("code")}", true), it, "text/html", "UTF-8", null)
+      webContent.loadDataWithBaseURL(Url.web("network.${user.getInteger("code")}.${user.getInteger("code")}", true), it, "text/html", "UTF-8", null)
       loading.closeDialog()
     }, {
       val handleError = HandleError(it).result()

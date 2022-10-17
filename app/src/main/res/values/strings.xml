@@ -36,6 +36,7 @@
   <string name="packages">Packages</string>
   <string name="ledger">Ledger</string>
   <string name="tron">Tron</string>
+  <string name="usdt">USDT</string>
   <string name="buy">Buy</string>
   <string name="pin">PIN</string>
 </resources>
